@@ -19,13 +19,13 @@ We started with worldclouds for both general words in the reviews and as well as
 
 ### Wordcloud for all reviews
 
-![*Wordcloud reviews*](img/wordcloud.png)
+<img src="img/wordcloud.png" width="250">
 
 We can see that the words "food", "place", "like" and "good" are among of the most frequently used in the reviews. This will be used later on to get more insights on the relationships between the words.
 
 ### Wordcloud for categories
 
-<center>![*Wordcloud topics*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\wordcloudtopics.png){ width=50% }</center>
+<img src="img/wordcloudtopics.png" width="500">
 
 We can see that "bars" are the most frequent category amongst restaurants, so from this we can infer that many restaurants in Las Vegas are likely to also have a bar. "American" and "Nightlife" also appear into the most frequent categories.
 
@@ -34,14 +34,14 @@ We can see that "bars" are the most frequent category amongst restaurants, so fr
 ### Bigrams to Map Relationships between words
 We started by identifying 3 key words ("food, "place" and "service") that are significant in the restaurant industry. Then we built bigrams to find relationships between these key words and the entire review content. The methodology used was to consider only the combination of words that have a total frequency of more than 30. 
 
-<center>![*Word Map Bigrams*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\word_map.png){ width=90% }</center>
+<img src="img/word_map.PNG" width="500">
 
 As we can see, this approach allows as you to clearly visualize which relationships between words are stongest. The darker the rrow indicates arrows the strongest relationships. For instance, we can see that food is highly-correlated with great and well, place with good and service with impeccable and friendly.
 
 ### Map emotions for each star rating
 In this step to map how different star ratings are related with different emotions, we used "nrc" lexicon from `get_sentiments` function and plotted a radar chart using `chartJSRadar` function. The key emotions included in this lexicon dictionary are joy, trust, disgust and anger.
 
-<center>![*Emotions star rating*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\map_emotions.png){ width=80% }</center>
+<img src="img/map_emotions.png" width="400">
 
 As we can see, 5 star reviews are most associated with joyous feelings and least associated with anger and disgust. On the other hand, low review rates have higher correlation with disgust, sadness and anger feelings. Even if the differences in the map are not that large, is a good first approach to understand the main emotions behind the reviews based on the star ratings.
 
@@ -51,9 +51,7 @@ After gaining some initial insights into the nature of the review data, we evalu
 
 ### Word sentiment per star level
 
-
-<center>![*Bar chart dictionary-based lookup*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\bingdictionarygraph.png){ width=70% }</center>
-
+<img src="img/bingdictionarygraph.PNG" width="400">
 
 While important, the results here should perhqps come as no surprise, as one should expect that as the review star level increases, so too should the overall number of positive words in those reviews. One interesting insight is that the number of positive words within 1 star reviews is on par with the amount of negative words. Overall, with this bing dictionary unigram approach, the overall sentiment of the reviews is seen as quite positive.
 
@@ -61,11 +59,9 @@ While important, the results here should perhqps come as no surprise, as one sho
 We also tested sentimentr package with inbuilt dictionary based text analysis  for comparing rating to text and it was positive. For this we separated the reviews in 5 cartegories based on star and found correation betweeen user ratings and text score through sentimentr package. we can see the mean .for 1 star as -0.02612, 2 as .03571 and for 5 high as 0.24, the baseline sentimentr uses is zero .
 The two graphs below show the positive sentiment on the right side for 5 rating and more negative sentiment for 1 rating.
 
+<img src="img/Sentiment_star_1.png" width="400">
 
-<center>![*Sentiment star 1*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\Sentiment_star_1.png){ width=70% }</center>
-
-<center>![*Sentiment star 5*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\Sentiment_star_5.png){ width=70% }</center>
-
+<img src="img/Sentiment_star_5.png" width="400">
 
 ## 5. Machine Learning Approaches
 
@@ -77,39 +73,32 @@ This approach consist on creating 2 boolean dependent variables based on the rat
 **Decision Trees**
 We start applying decision trees model. We run 2 models, 1 using the `Negative` variable as the dependent variable and all the other features as independent, and same for the other model but with `Positive` as the dependent variable. Then we predict our model and compare it with the test sample, and we finally get the confusion matrix and accuracy of the model, as presented below.
 
-
-<center>![*Confusion Matrix Decision Trees Negative*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\cm\cm_dtneg.png){ width=50% }</center>
-
-<center>![*Confusion Matrix Decision Trees Positive*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\cm\cm_dtpos.png){ width=50% }</center>
+<img src="img/cm/cm_dtneg.PNG" width="200">
+<img src="img/cm/cm_dtpos.PNG" width="200">
 
 As we can see, the model accuracy is quite good, as in around 85% of the times the prediction is correct. However, is important to take into account the baseline model and compare with it, as the accuracy by itself can show a bias result given that in some cases just because of the nature of the data, we can have high accuracy randomly, just because most of the values for the dependent variable are "TRUE". In this line, we build the baseline model, which has an accuracy of  0.73 for negative values and 0.58 for the positive ones. This means that actually the positive model performs better than the negative one, as even if it's accuracy is lower, in relative terms (that is, compared to the baseline model) is higher. 
 
 **Random Forest**
 For random forest, again we run the model, made the predictions and constructed the confusion matrix, calculating also the model accuracy.
 
-
-<center>![*Confusion Matrix Random Forest Negative*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\cm\cm_rfneg.png){ width=50% }</center>
-
-<center>![*Confusion Matrix Random Forest Positive*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\cm\cm_rfpos.png){ width=50% }</center>
+<img src="img/cm/cm_rfneg.PNG" width="200">
+<img src="img/cm/cm_rfpos.PNG" width="200">
 
 In this case we can observe that the model performs better than the decision trees, with an accuracy of 0.90 and 0.86 for the negative and positive models, respectively. However, is interesting to discuss whether or not can be some overfitting in this models.
 
 **Logistic Regression**
 Lastly, we run the logistic regression model. For this model, we also construct the ROC curve to show visually how the model perfoms and to compare both the positive and negative models in one chart.
 
-
-<center>![*Confusion Matrix Logistic Regression Negative*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\cm\cm_lrneg.png){ width=50% }</center>
-
-<center>![*Confusion Matrix Logistic Regression Positive*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\cm\cm_lrpos.png){ width=50% }</center>
-
-<center>![*ROC Curve Logistic Regression*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\roc_curve_lr.png){ width=60% }</center>
+<img src="img/cm/cm_lrneg.PNG" width="200">
+<img src="img/cm/cm_lrpos.PNG" width="200">
+<img src="img/roc_curve_lr.PNG" width="400">
 
 We can observe that the accuracy of this model is very similar to the random forest, even slightly better. If we see the ROC curves, we can see that the negative one performs slightly better than the positive, and the AUC area is quite high. So, we could conclude that this model performs good in order to predict if the sentiment behind the words is positive or negative, which could be used to predict sentiment of other reviews for the future.
 
 ### 2nd approach
 In this approach we tried to replicate machine learning alogithms taught in the class, applied for this case. We run random forest algorithm, diving the data into train/test set and tested with multiple sizes 70/30 and 60/40. We also divided the data based on star rating and tested, the best performance we got was using positive rating above 4 and everything. We did the text analysis taking the proper processes which included building the dtm matrix and cleaning the data. After running the models, we got an accuracy of 59% for star rating positive more or equal to 4, and negative less or equal to 1. Also the train/test ratio for this model was 60/40.
 
-<center>![*ROC curve random forest*](C:\Users\fgalicojustitz\Documents\GitHub\SMAGroup8\img\ROC_curve.png){ width=60% }</center>
+<img src="img/ROC_curve.png" width="400">
 
 ## 6. Conclusion
 

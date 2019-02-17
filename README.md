@@ -21,7 +21,7 @@ We started with worldclouds for both general words in the reviews and as well as
 
 <center>![*Wordcloud reviews*](https://github.com/fabiangalico/Sentiment-Analysis-Yelp-Reviews/tree/master/img/wordcloud.png){ width=30% }</center>
 
-![alt text](https://raw.githubusercontent.com/fabiangalico/Sentiment-Analysis-Yelp-Reviews/master/path/to/img/wordcloud.png)
+![alt text](https://raw.githubusercontent.com/fabiangalico/Sentiment-Analysis-Yelp-Reviews/img/wordcloud.png)
 
 We can see that the words "food", "place", "like" and "good" are among of the most frequently used in the reviews. This will be used later on to get more insights on the relationships between the words.
 
